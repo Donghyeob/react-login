@@ -1,0 +1,39 @@
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.idContainer {
+  display: flex;
+  flex-direction: row;
+  margin-left: -30px;
+}
+.anticon-user {
+  line-height: 40px;
+  margin-left: -30px;
+}
+.idBox {
+  width: 300px;
+  height: 30px;
+  margin-bottom: 15px;
+}
+.passContainer {
+  display: flex;
+  flex-direction: row;
+  margin-left: -30px;
+}
+.anticon-eye {
+  line-height: 40px;
+  margin-left: -30px;
+  cursor: pointer;
+}
+.anticon-eye-invisible {
+  line-height: 40px;
+  margin-left: -30px;
+  cursor: pointer;
+}
+.pwdBox {
+  width: 300px;
+  height: 30px;
+}
