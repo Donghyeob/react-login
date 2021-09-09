@@ -1,0 +1,13 @@
+.content {
+  width: 1100px;
+  display: flex;
+  flex-direction: row;
+}
+.content > div:nth-child(1) {
+  background-color: skyblue;
+  width: 50%;
+  height: 600px;
+}
+.content > div:nth-child(2) {
+  width: 50%;
+}
