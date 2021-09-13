@@ -1,23 +1,50 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../Css/loginForm.css'
 import { UserOutlined, EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
+import Captcha from './Captcha'
 
 const LoginForm = () => {
-  const [id, setId] = useState()
-  const [password, setPassword] = useState()
+  const [id, setId] = useState('')
+  const [password, setPassword] = useState('')
   const [passShow, setPassShow] = useState(false)
+  const visiRef = useRef()
+  const checkRef = useRef()
 
   const onChangeId = (e) => {
     const inputText = e.target.value
-
     setId(inputText)
   }
 
   const onChangePassword = (e) => {
     const inputText = e.target.value
-
     setPassword(inputText)
   }
+
+  const onClickPassVisible = () => {
+    if (!passShow) {
+      setPassShow(true)
+      visiRef.current.type = 'text'
+    } else {
+      setPassShow(false)
+      visiRef.current.type = 'password'
+    }
+  }
+
+  const onClickFixId = (e) => {
+    const checked = e.target.checked
+    if (checked) {
+      localStorage.setItem('id', id)
+      localStorage.setItem('checked', true)
+    } else {
+      localStorage.removeItem('id')
+      localStorage.removeItem('checked')
+    }
+  }
+
+  useEffect(() => {
+    localStorage.getItem('id') && setId(localStorage.getItem('id'))
+    localStorage.getItem('checked') && (checkRef.current.checked = true)
+  })
 
   return (
     <div className='loginContainer'>
@@ -30,15 +57,22 @@ const LoginForm = () => {
         <UserOutlined />
       </div>
       <div className='passContainer'>
-        <input className='pwdBox' type='password' value={password} onChange={onChangePassword} placeholder='Password' />
-        {passShow ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+        <input className='pwdBox' ref={visiRef} type='password' value={password} onChange={onChangePassword} placeholder='Password' />
+        {
+          passShow
+            ? <EyeInvisibleOutlined onClick={onClickPassVisible} />
+            : <EyeOutlined onClick={onClickPassVisible} />
+        }
       </div>
       <div>
-        captcha
+        <Captcha />
       </div>
       <div>
-        Login button
-        remember id
+        <button className='loginBtn'>로그인</button>
+        <div className='fixId'>
+          <div><input type='checkbox' ref={checkRef} onClick={onClickFixId} />아이디 저장</div>
+          <div><span>아이디 찾기</span><span>|</span><span>비밀번호 찾기</span></div>
+        </div>
       </div>
     </div>
   )
