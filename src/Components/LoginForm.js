@@ -7,6 +7,8 @@ const LoginForm = () => {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
   const [passShow, setPassShow] = useState(false)
+  const [captcha, setCaptcha] = useState('')
+  const [captchaString, setCaptchaString] = useState('')
   const visiRef = useRef()
   const checkRef = useRef()
 
@@ -41,6 +43,14 @@ const LoginForm = () => {
     }
   }
 
+  const onClickLogin = () => {
+    if (captchaString === captcha) {
+      console.log('Login success@@@')
+    } else {
+      console.log('Login fail@@@')
+    }
+  }
+
   useEffect(() => {
     localStorage.getItem('id') && setId(localStorage.getItem('id'))
     localStorage.getItem('checked') && (checkRef.current.checked = true)
@@ -65,10 +75,14 @@ const LoginForm = () => {
         }
       </div>
       <div>
-        <Captcha />
+        <Captcha
+          captchaString={captchaString}
+          setCaptchaString={setCaptchaString}
+          captcha={captcha}
+          setCaptcha={setCaptcha} />
       </div>
       <div>
-        <button className='loginBtn'>로그인</button>
+        <button className='loginBtn' onClick={onClickLogin}>로그인</button>
         <div className='fixId'>
           <div><input type='checkbox' ref={checkRef} onClick={onClickFixId} />아이디 저장</div>
           <div><span>아이디 찾기</span><span>|</span><span>비밀번호 찾기</span></div>
