@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import '../Css/loginForm.css'
 import { UserOutlined, EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
 import Captcha from './Captcha'
+import LoginModal from './LoginModal'
 
 const LoginForm = () => {
   const [id, setId] = useState('')
@@ -9,8 +10,10 @@ const LoginForm = () => {
   const [passShow, setPassShow] = useState(false)
   const [captcha, setCaptcha] = useState('')
   const [captchaString, setCaptchaString] = useState('')
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const visiRef = useRef()
   const checkRef = useRef()
+  const modalRef = useRef()
 
   const onChangeId = (e) => {
     const inputText = e.target.value
@@ -34,27 +37,31 @@ const LoginForm = () => {
 
   const onClickFixId = (e) => {
     const checked = e.target.checked
+    const exdate = new Date()
     if (checked) {
-      localStorage.setItem('id', id)
-      localStorage.setItem('checked', true)
+      exdate.setDate(exdate.getDate() + 30)
+      document.cookie = 'id=' + id + ';' + 'path=/;expires=' + exdate.toGMTString()
     } else {
-      localStorage.removeItem('id')
-      localStorage.removeItem('checked')
+      exdate.setDate(exdate.getDate() - 1)
+      document.cookie = 'id="";path=/;expires=' + exdate.toGMTString()
     }
   }
 
   const onClickLogin = () => {
-    if (captchaString === captcha) {
-      console.log('Login success@@@')
-    } else {
-      console.log('Login fail@@@')
-    }
+    setIsModalVisible(true)
   }
 
   useEffect(() => {
-    localStorage.getItem('id') && setId(localStorage.getItem('id'))
-    localStorage.getItem('checked') && (checkRef.current.checked = true)
-  })
+    let userId = document.cookie.split(';')[0].slice(3)
+    console.log(userId)
+    if (userId !== '') {
+      setId(userId)
+      checkRef.current.checked = true
+    } else {
+      checkRef.current.checked = false
+    }
+
+  }, [])
 
   return (
     <div className='loginContainer'>
@@ -83,6 +90,7 @@ const LoginForm = () => {
       </div>
       <div>
         <button className='loginBtn' onClick={onClickLogin}>로그인</button>
+        <LoginModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} modalRef={modalRef} />
         <div className='fixId'>
           <div><input type='checkbox' ref={checkRef} onClick={onClickFixId} />아이디 저장</div>
           <div><span>아이디 찾기</span><span>|</span><span>비밀번호 찾기</span></div>

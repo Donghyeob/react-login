@@ -58,14 +58,6 @@ const Captcha = ({ captchaString, setCaptchaString, captcha, setCaptcha }) => {
     }, 100)
   }, [ctx, captchaString])
 
-  // useEffect(() => {
-  //   randomString()
-  //   setTimeout(() => {
-  //     if (ctx) drawCaptcha()
-  //     else console.log('not load')
-  //   }, 100)
-  // }, [ctx])
-
   return (
     <>
       <div className='captchaContainer'>
