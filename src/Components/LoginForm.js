@@ -3,6 +3,7 @@ import '../Css/loginForm.css'
 import { UserOutlined, EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
 import Captcha from './Captcha'
 import LoginModal from './LoginModal'
+import { Link } from 'react-router-dom'
 
 const LoginForm = () => {
   const [id, setId] = useState('')
@@ -10,7 +11,7 @@ const LoginForm = () => {
   const [passShow, setPassShow] = useState(false)
   const [captcha, setCaptcha] = useState('')
   const [captchaString, setCaptchaString] = useState('')
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
   const visiRef = useRef()
   const checkRef = useRef()
   const modalRef = useRef()
@@ -35,10 +36,10 @@ const LoginForm = () => {
     }
   }
 
-  const onClickFixId = (e) => {
-    const checked = e.target.checked
+  const FixedId = (e) => {
+    console.log(e)
     const exdate = new Date()
-    if (checked) {
+    if (e) {
       exdate.setDate(exdate.getDate() + 30)
       document.cookie = 'id=' + id + ';' + 'path=/;expires=' + exdate.toGMTString()
     } else {
@@ -47,20 +48,27 @@ const LoginForm = () => {
     }
   }
 
-  const onClickLogin = () => {
-    setIsModalVisible(true)
+  const onClickChecked = (e) => {
+    const checked = e.target.checked
+    if (checked) {
+      FixedId(true)
+    } else {
+      FixedId(false)
+    }
   }
 
   useEffect(() => {
+
+  }, [id])
+
+  useEffect(() => {
     let userId = document.cookie.split(';')[0].slice(3)
-    console.log(userId)
     if (userId !== '') {
       setId(userId)
       checkRef.current.checked = true
     } else {
       checkRef.current.checked = false
     }
-
   }, [])
 
   return (
@@ -89,11 +97,11 @@ const LoginForm = () => {
           setCaptcha={setCaptcha} />
       </div>
       <div>
-        <button className='loginBtn' onClick={onClickLogin}>로그인</button>
-        <LoginModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} modalRef={modalRef} />
+        <button className='loginBtn'>로그인</button>
+        {/* <LoginModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} modalRef={modalRef} /> */}
         <div className='fixId'>
-          <div><input type='checkbox' ref={checkRef} onClick={onClickFixId} />아이디 저장</div>
-          <div><span>아이디 찾기</span><span>|</span><span>비밀번호 찾기</span></div>
+          <label><input type='checkbox' ref={checkRef} onClick={onClickChecked} />아이디 저장</label>
+          <div><Link to='/searchId'>아이디 찾기</Link><span> | </span><Link to='/searchPass'>비밀번호 찾기</Link></div>
         </div>
       </div>
     </div>

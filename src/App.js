@@ -1,9 +1,13 @@
 import MainRouter from "./Components/MainRouter";
 
 function App() {
+  const userInfo = {
+    id: 'admin',
+    password: '123',
+  }
   return (
     <>
-      <MainRouter />
+      <MainRouter userInfo={userInfo} />
     </>
   );
 }
