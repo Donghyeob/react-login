@@ -13,10 +13,27 @@
   line-height: 40px;
   margin-left: -30px;
 }
+.anticon-mobile {
+  line-height: 40px;
+  margin-left: -30px;
+}
+.anticon-mail {
+  line-height: 40px;
+  margin-left: -30px;
+}
 .idBox {
   width: 300px;
   height: 30px;
   margin-bottom: 15px;
+}
+.searchInput {
+  width: 300px;
+  height: 30px;
+  margin-bottom: 15px;
+  background-color: lightgray;
+}
+.searchInput:focus {
+  background-color: white;
 }
 .passContainer {
   display: flex;
