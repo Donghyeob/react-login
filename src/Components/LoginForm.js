@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
-import '../Css/loginForm.css'
-import { UserOutlined, EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
-import Captcha from './Captcha'
-import LoginModal from './LoginModal'
 import { Link } from 'react-router-dom'
+import { UserOutlined, EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
+import { setCookies, getCookies, deleteCookies } from '../Module/cookies'
+import Captcha from './Captcha'
+import { userInfo } from '../Data/userInfo'
+import '../Css/loginForm.css'
 
-const LoginForm = () => {
+const LoginForm = ({ setLogined }) => {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
   const [passShow, setPassShow] = useState(false)
@@ -14,7 +15,6 @@ const LoginForm = () => {
   // const [isModalVisible, setIsModalVisible] = useState(false);
   const visiRef = useRef()
   const checkRef = useRef()
-  const modalRef = useRef()
 
   const onChangeId = (e) => {
     const inputText = e.target.value
@@ -36,40 +36,34 @@ const LoginForm = () => {
     }
   }
 
-  const FixedId = (e) => {
-    console.log(e)
-    const exdate = new Date()
-    if (e) {
-      exdate.setDate(exdate.getDate() + 30)
-      document.cookie = 'id=' + id + ';' + 'path=/;expires=' + exdate.toGMTString()
-    } else {
-      exdate.setDate(exdate.getDate() - 1)
-      document.cookie = 'id="";path=/;expires=' + exdate.toGMTString()
-    }
-  }
-
   const onClickChecked = (e) => {
     const checked = e.target.checked
     if (checked) {
-      FixedId(true)
+      setCookies('id', id)
     } else {
-      FixedId(false)
+      deleteCookies('id')
     }
   }
 
-  useEffect(() => {
+  const onClickLogin = () => {
+    userInfo.id === id && userInfo.password === password && setLogined(true)
+  }
 
-  }, [id])
-
   useEffect(() => {
-    let userId = document.cookie.split(';')[0].slice(3)
-    if (userId !== '') {
-      setId(userId)
+    let userId = getCookies('id')
+    if (userId) {
+      setId(userId ? userId : '')
       checkRef.current.checked = true
     } else {
       checkRef.current.checked = false
     }
   }, [])
+
+  useEffect(() => {
+    if (checkRef.current.checked === true) {
+      setCookies('id', id)
+    }
+  }, [id])
 
   return (
     <div className='loginContainer'>
@@ -97,8 +91,8 @@ const LoginForm = () => {
           setCaptcha={setCaptcha} />
       </div>
       <div>
-        <button className='loginBtn'>로그인</button>
-        {/* <LoginModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} modalRef={modalRef} /> */}
+        <Link to='/loginSuccess' onClick={onClickLogin}><button className='loginBtn'>로그인</button></Link>
+        {/* <LoginModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} /> */}
         <div className='fixId'>
           <label><input type='checkbox' ref={checkRef} onClick={onClickChecked} />아이디 저장</label>
           <div><Link to='/searchId'>아이디 찾기</Link><span> | </span><Link to='/searchPass'>비밀번호 찾기</Link></div>
