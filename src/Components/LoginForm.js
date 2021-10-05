@@ -4,7 +4,6 @@ import { UserOutlined, EyeOutlined, EyeInvisibleOutlined } from '@ant-design/ico
 import { setCookies, getCookies, deleteCookies } from '../Module/cookies'
 import Captcha from './Captcha'
 import { userInfo } from '../Data/userInfo'
-import '../Css/loginForm.css'
 
 const LoginForm = ({ setLogined }) => {
   const [id, setId] = useState('')

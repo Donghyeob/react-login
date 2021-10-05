@@ -1,3 +1,6 @@
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
 .loginContainer {
   display: flex;
   flex-direction: column;
@@ -86,3 +89,19 @@
   height: 30px;
   margin-left: 12px;
 }
+.content {
+  width: 1100px;
+  display: flex;
+  flex-direction: row;
+}
+.content > div:nth-child(1) {
+  background-color: skyblue;
+  width: 50%;
+  height: 600px;
+}
+.content > div:nth-child(2) {
+  width: 50%;
+}
+`
+
+export default GlobalStyle

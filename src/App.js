@@ -1,9 +1,11 @@
-import MainRouter from "./Components/MainRouter";
+import Home from "./Components/Home";
+import GlobalStyle from "./Css/GlobalStyle";
 
 function App() {
   return (
     <>
-      <MainRouter />
+      <GlobalStyle />
+      <Home />
     </>
   );
 }
