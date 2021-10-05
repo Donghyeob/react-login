@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { UserOutlined, MobileOutlined, MailOutlined } from '@ant-design/icons'
-import '../Css/loginForm.css'
 
 const SearchId = () => {
   const [mobile, setMobile] = useState('')
