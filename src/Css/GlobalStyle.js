@@ -101,6 +101,7 @@ const GlobalStyle = createGlobalStyle`
 }
 .content > div:nth-child(2) {
   width: 50%;
+  margin-top: 70px;
 }
 `
 
