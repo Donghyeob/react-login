@@ -1,26 +1,33 @@
-// import React, { useRef, useState } from 'react'
-// import { Modal } from 'antd'
+import React, { useState } from 'react';
+import { Modal, Button } from 'antd';
+import 'antd/dist/antd.css';
 
-// const LoginModal = ({ isModalVisible, setIsModalVisible, modalRef }) => {
-//   console.log(isModalVisible)
+const LoginModal = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-//   const handleOk = () => {
-//     setIsModalVisible(false);
-//   };
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
 
-//   const handleCancel = () => {
-//     setIsModalVisible(false);
-//   };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
 
-//   return (
-//     <>
-//       <Modal title="Basic Modal" ref={modalRef} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-//         <p>Some contents...</p>
-//         <p>Some contents...</p>
-//         <p>Some contents...</p>
-//       </Modal>
-//     </>
-//   )
-// }
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
-// export default LoginModal
+  return (
+    <>
+      <button className='loginBtn' onClick={showModal}>
+        로그인
+      </button>
+      <Modal title="OTP Verification" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} okText='Verify'>
+        <span>Please select a transfer methods.</span>
+        <div></div>
+      </Modal>
+    </>
+  );
+};
+
+export default LoginModal
