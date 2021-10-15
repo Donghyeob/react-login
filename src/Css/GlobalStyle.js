@@ -110,6 +110,29 @@ const GlobalStyle = createGlobalStyle`
 .ant-modal-content {
   text-align: center;
 }
+.ant-modal-body input[type='radio'] {
+  margin: 0 15px 0 5px;
+}
+.ant-modal-body label {
+  padding: 8px 98px 8px 5px;
+  margin: 0 3px 0 3px;
+  border-radius: 5px;
+  background: #f2f2f2;
+}
+.ant-modal-body > div:nth-child(1) {
+  margin-top: 0px;
+}
+.ant-modal-body > div {
+  margin-top: 20px;
+}
+.ant-modal-body > div:nth-child(3) > button {
+  width: 98%;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 0 8px 0;
+  background: #52bf57;
+  color: white;
+}
 .ant-modal-footer {
   text-align: center;
 }
