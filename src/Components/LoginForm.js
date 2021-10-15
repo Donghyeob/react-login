@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { UserOutlined, EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
 import { setCookies, getCookies, deleteCookies } from '../Module/cookies'
 import Captcha from './Captcha'
-import { userInfo } from '../Data/userInfo'
+// import { userInfo } from '../Data/userInfo'
+import LoginModal from './LoginModal'
 
 const LoginForm = ({ setLogined }) => {
   const [id, setId] = useState('')
@@ -11,7 +12,7 @@ const LoginForm = ({ setLogined }) => {
   const [passShow, setPassShow] = useState(false)
   const [captcha, setCaptcha] = useState('')
   const [captchaString, setCaptchaString] = useState('')
-  // const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const visiRef = useRef()
   const checkRef = useRef()
 
@@ -44,9 +45,9 @@ const LoginForm = ({ setLogined }) => {
     }
   }
 
-  const onClickLogin = () => {
-    userInfo.id === id && userInfo.password === password && setLogined(true)
-  }
+  // const onClickLogin = () => {
+  //   userInfo.id === id && userInfo.password === password && setLogined(true)
+  // }
 
   useEffect(() => {
     let userId = getCookies('id')
@@ -90,8 +91,8 @@ const LoginForm = ({ setLogined }) => {
           setCaptcha={setCaptcha} />
       </div>
       <div>
-        <Link to='/loginSuccess' onClick={onClickLogin}><button className='loginBtn'>로그인</button></Link>
-        {/* <LoginModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} /> */}
+        {/* <Link to='/loginSuccess' onClick={showModal}><button className='loginBtn'>로그인</button></Link> */}
+        <LoginModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
         <div className='fixId'>
           <label><input type='checkbox' ref={checkRef} onClick={onClickChecked} />아이디 저장</label>
           <div><Link to='/searchId'>아이디 찾기</Link><span> | </span><Link to='/searchPass'>비밀번호 찾기</Link></div>

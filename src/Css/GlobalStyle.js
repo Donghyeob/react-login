@@ -67,6 +67,7 @@ const GlobalStyle = createGlobalStyle`
   color: white;
   border: 0px;
   border-radius: 5px;
+  cursor: pointer;
 }
 .fixId {
   display: flex;
@@ -102,6 +103,22 @@ const GlobalStyle = createGlobalStyle`
 .content > div:nth-child(2) {
   width: 50%;
   margin-top: 70px;
+}
+.ant-modal {
+  width: 400px !important;
+}
+.ant-modal-content {
+  text-align: center;
+}
+.ant-modal-footer {
+  text-align: center;
+}
+.ant-modal-footer > .ant-btn {
+  width: 40%;
+}
+.ant-modal-footer > .ant-btn-primary {
+  background: tomato;
+  border-color: tomato;
 }
 `
 
