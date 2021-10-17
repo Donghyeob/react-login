@@ -125,6 +125,9 @@ const GlobalStyle = createGlobalStyle`
 .ant-modal-body > div {
   margin-top: 20px;
 }
+.ant-modal-body > div:nth-child(2) > label {
+  cursor: pointer;
+}
 .ant-modal-body > div:nth-child(3) > button {
   width: 98%;
   border: none;
@@ -132,6 +135,11 @@ const GlobalStyle = createGlobalStyle`
   padding: 8px 0 8px 0;
   background: #52bf57;
   color: white;
+  cursor: pointer;
+}
+.ant-modal-body > div:nth-child(5) > ul {
+  font-size: 10px;
+  text-align: left;
 }
 .ant-modal-footer {
   text-align: center;

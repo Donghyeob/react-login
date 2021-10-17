@@ -3,10 +3,11 @@ import { Modal } from 'antd';
 import 'antd/dist/antd.css';
 
 const LoginModal = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  let limitTime = 300;
-  const [min, setMin] = useState('');
-  const [sec, setSec] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  let limitTime = 300
+  const [min, setMin] = useState('')
+  const [sec, setSec] = useState('')
+  const [limitTimer, setLimitTimer] = useState(null)
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -14,6 +15,9 @@ const LoginModal = () => {
 
   const handleOk = () => {
     setIsModalVisible(false);
+    clearInterval(limitTimer)
+    setMin('')
+    setSec('')
   };
 
   const handleCancel = () => {
@@ -25,16 +29,18 @@ const LoginModal = () => {
   }
 
   const handleTimer = () => {
-    setInterval(() => {
+    clearInterval(limitTimer)
+    setLimitTimer(setInterval(() => {
       setMin(parseInt(limitTime / 60) + ':')
       setSec((limitTime % 60).toString().length < 2 ? '0' + (limitTime % 60) : limitTime % 60)
       console.log((limitTime % 60).toString().length)
       limitTime -= 1;
       console.log('timer start')
-    }, 1000)
+    }, 1000))
   }
 
   useEffect(() => {
+
   }, [limitTime])
 
   return (
@@ -55,6 +61,12 @@ const LoginModal = () => {
         </div>
         <div>
           <input type='text' /><span>{min}{sec}</span>
+        </div>
+        <div>
+          <ul>
+            <li><span>If if is not sent, please contact the administrator.</span></li>
+            <li><span>If you extend the time more than 3 times, verification is restricted.</span></li>
+          </ul>
         </div>
       </Modal>
     </>
