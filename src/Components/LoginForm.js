@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { UserOutlined, EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
 import { setCookies, getCookies, deleteCookies } from '../Module/cookies'
 import Captcha from './Captcha'
-// import { userInfo } from '../Data/userInfo'
+import { userInfo } from '../Data/userInfo'
 import LoginModal from './LoginModal'
 
 const LoginForm = ({ setLogined }) => {
@@ -45,9 +45,13 @@ const LoginForm = ({ setLogined }) => {
     }
   }
 
-  // const onClickLogin = () => {
-  //   userInfo.id === id && userInfo.password === password && setLogined(true)
-  // }
+  const onClickLogin = () => {
+    userInfo.id === id && userInfo.password === password && captchaString === captcha && showModal()
+  }
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
 
   useEffect(() => {
     let userId = getCookies('id')
@@ -91,7 +95,7 @@ const LoginForm = ({ setLogined }) => {
           setCaptcha={setCaptcha} />
       </div>
       <div>
-        {/* <Link to='/loginSuccess' onClick={showModal}><button className='loginBtn'>로그인</button></Link> */}
+        <button className='loginBtn' onClick={onClickLogin}>로그인</button>
         <LoginModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
         <div className='fixId'>
           <label><input type='checkbox' ref={checkRef} onClick={onClickChecked} />아이디 저장</label>
