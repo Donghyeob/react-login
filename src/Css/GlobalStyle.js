@@ -90,10 +90,15 @@ const GlobalStyle = createGlobalStyle`
   height: 30px;
   margin-left: 12px;
 }
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
 .content {
   width: 1100px;
   display: flex;
   flex-direction: row;
+  margin: 100px;
 }
 .content > div:nth-child(1) {
   background-color: skyblue;
@@ -103,6 +108,13 @@ const GlobalStyle = createGlobalStyle`
 .content > div:nth-child(2) {
   width: 50%;
   margin-top: 70px;
+}
+.footer {
+  width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  border-top: 1px solid lightgray;
+  padding-top: 20px;
 }
 .ant-modal {
   width: 400px !important;

@@ -9,21 +9,23 @@ const Home = () => {
 
   return (
     <>
-      <div className='content'>
-        <div>image</div>
-        <div>
-          <Router>
-            <Switch>
-              <Route path='/' exact render={() => <LoginForm setLogined={setLogined} />} />
-              <Route path='/searchId' exact render={() => <SearchMain props={'SearchId'} />} />
-              <Route path='/searchPass' exact render={() => <SearchMain props={'SearchPass'} />} />
-              <Route path='/loginSuccess' exact render={() => logined ? <LoginSuccess /> : <Redirect to='/' />} />
-            </Switch>
-          </Router>
+      <div className='wrapper'>
+        <div className='content'>
+          <div></div>
+          <div>
+            <Router>
+              <Switch>
+                <Route path='/' exact render={() => <LoginForm setLogined={setLogined} />} />
+                <Route path='/searchId' exact render={() => <SearchMain props={'SearchId'} />} />
+                <Route path='/searchPass' exact render={() => <SearchMain props={'SearchPass'} />} />
+                <Route path='/loginSuccess' exact render={() => logined ? <LoginSuccess /> : <Redirect to='/' />} />
+              </Switch>
+            </Router>
+          </div>
         </div>
       </div>
       <div className='footer'>
-        <h1>나는 푸터</h1>
+        <span>copyright(c) 2021 k sat corp. all right reserved.</span>
       </div>
     </>
   )
