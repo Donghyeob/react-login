@@ -24,6 +24,9 @@ const GlobalStyle = createGlobalStyle`
   line-height: 40px;
   margin-left: -30px;
 }
+.anticon-arrow-left {
+  margin-right: 10px;
+}
 .idBox {
   width: 300px;
   height: 30px;
@@ -162,6 +165,15 @@ const GlobalStyle = createGlobalStyle`
 .ant-modal-footer > .ant-btn-primary {
   background: tomato;
   border-color: tomato;
+}
+.positionContainer {
+  position: relative;
+}
+.searchBackBtn {
+  position: absolute;
+  bottom: 0px;
+  display: block;
+  cursor: pointer;
 }
 `
 

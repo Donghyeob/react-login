@@ -12,7 +12,7 @@ const Home = () => {
       <div className='wrapper'>
         <div className='content'>
           <div></div>
-          <div>
+          <div className='positionContainer'>
             <Router>
               <Switch>
                 <Route path='/' exact render={() => <LoginForm setLogined={setLogined} />} />
