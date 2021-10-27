@@ -5,7 +5,6 @@ import { ArrowLeftOutlined } from '@ant-design/icons'
 
 const SearchMain = ({ props }) => {
   const [userName, setUserName] = useState('')
-  const [userId, setUserId] = useState('')
   const [mobile, setMobile] = useState('')
   const [mail, setMail] = useState('')
 

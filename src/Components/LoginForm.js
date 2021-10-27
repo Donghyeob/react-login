@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom'
 import { UserOutlined, EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
 import { setCookies, getCookies, deleteCookies } from '../Module/cookies'
 import Captcha from './Captcha'
-import { userInfo } from '../Data/userInfo'
 import LoginModal from './LoginModal'
 
-const LoginForm = ({ setLogined }) => {
+const LoginForm = ({ userState, setLogined }) => {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
   const [passShow, setPassShow] = useState(false)
@@ -46,7 +45,10 @@ const LoginForm = ({ setLogined }) => {
   }
 
   const onClickLogin = () => {
-    userInfo.id === id && userInfo.password === password && captchaString === captcha && showModal()
+    (userState.id === id && userState.password === password && captchaString === captcha) === true
+      ? showModal()
+      // ? setLogined(true)
+      : alert('id, password, captcha 확인')
   }
 
   const showModal = () => {
@@ -96,7 +98,7 @@ const LoginForm = ({ setLogined }) => {
       </div>
       <div>
         <button className='loginBtn' onClick={onClickLogin}>로그인</button>
-        <LoginModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
+        <LoginModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} setLogined={setLogined} />
         <div className='fixId'>
           <label><input type='checkbox' ref={checkRef} onClick={onClickChecked} />아이디 저장</label>
           <div><Link to='/searchId'>아이디 찾기</Link><span> | </span><Link to='/searchPass'>비밀번호 찾기</Link></div>

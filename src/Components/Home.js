@@ -3,9 +3,13 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import LoginForm from './LoginForm'
 import SearchMain from './SearchMain'
 import LoginSuccess from './LoginSuccess'
+import { userInfo } from '../Data/userInfo'
 
 const Home = () => {
   const [logined, setLogined] = useState(false)
+  const [userState, setUserState] = useState({ id: userInfo.id, password: userInfo.password })
+  console.log('Home')
+  console.log(logined)
 
   return (
     <>
@@ -14,11 +18,12 @@ const Home = () => {
           <div></div>
           <div className='positionContainer'>
             <Router>
+              {logined ? <Redirect to='/loginSuccess' /> : <Redirect to='/' />}
               <Switch>
-                <Route path='/' exact render={() => <LoginForm setLogined={setLogined} />} />
+                <Route path='/' exact render={() => <LoginForm userState={userState} setLogined={setLogined} />} />
                 <Route path='/searchId' exact render={() => <SearchMain props={'SearchId'} />} />
                 <Route path='/searchPass' exact render={() => <SearchMain props={'SearchPass'} />} />
-                <Route path='/loginSuccess' exact render={() => logined ? <LoginSuccess /> : <Redirect to='/' />} />
+                <Route path='/loginSuccess' exact render={() => <LoginSuccess />} />
               </Switch>
             </Router>
           </div>

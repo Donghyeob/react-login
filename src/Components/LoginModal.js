@@ -2,25 +2,48 @@ import React, { useEffect, useState } from 'react';
 import { Modal } from 'antd';
 import 'antd/dist/antd.css';
 
-const LoginModal = ({ isModalVisible, setIsModalVisible }) => {
+const LoginModal = ({ isModalVisible, setIsModalVisible, setLogined }) => {
   let limitTime = 300
   const [min, setMin] = useState('')
   const [sec, setSec] = useState('')
   const [limitTimer, setLimitTimer] = useState(null)
+  const [authText, setAuthText] = useState('')
+  const [authRandom, setAuthRandom] = useState('')
 
   const handleOk = () => {
-    setIsModalVisible(false);
     clearInterval(limitTimer)
     setMin('')
     setSec('')
+    if (authText === authRandom) {
+      setIsModalVisible(false)
+      setLogined(true)
+    } else {
+      handleSend()
+      setLogined(false)
+    }
+    setAuthText('')
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
   };
 
+  const onChangeText = (e) => {
+    const text = e.target.value
+    setAuthText(text)
+  }
+
   const handleSend = () => {
     handleTimer()
+    const chars = '0123456789'
+    const stringLength = 4
+    let randomText = ''
+    for (let i = 0; i < stringLength; i++) {
+      const rnum = Math.floor(Math.random() * chars.length)
+      randomText += chars.substring(rnum, rnum + 1)
+    }
+    setAuthRandom(randomText)
+    console.log(randomText)
   }
 
   const handleTimer = () => {
@@ -28,15 +51,9 @@ const LoginModal = ({ isModalVisible, setIsModalVisible }) => {
     setLimitTimer(setInterval(() => {
       setMin(parseInt(limitTime / 60) + ':')
       setSec((limitTime % 60).toString().length < 2 ? '0' + (limitTime % 60) : limitTime % 60)
-      console.log((limitTime % 60).toString().length)
       limitTime -= 1;
-      console.log('timer start')
     }, 1000))
   }
-
-  useEffect(() => {
-
-  }, [limitTime])
 
   return (
     <>
@@ -52,7 +69,7 @@ const LoginModal = ({ isModalVisible, setIsModalVisible }) => {
           <button onClick={handleSend}>Send</button>
         </div>
         <div>
-          <input type='text' /><span>{min}{sec}</span>
+          <input type='text' value={authText} onChange={onChangeText} /><span>{min}{sec}</span>
         </div>
         <div>
           <ul>
