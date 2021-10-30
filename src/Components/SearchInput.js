@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { MobileOutlined, MailOutlined } from '@ant-design/icons'
 
-const SearchInput = () => {
+const SearchInput = ({ setMobile }) => {
   const mobileRef = useRef()
   const mailRef = useRef()
 
@@ -18,6 +18,11 @@ const SearchInput = () => {
     }
   }
 
+  const onChangePhone = (e) => {
+    const text = e.target.value
+    setMobile(text)
+  }
+
   useEffect(() => {
     mobileRef.current.focus()
     mailRef.current.disabled = true
@@ -30,7 +35,7 @@ const SearchInput = () => {
         <label><input type='radio' onClick={onClickRadio} value={'email'} name={'infra'} />E-mail</label>
       </div>
       <div className='idContainer'>
-        <input className='searchInput' type='text' ref={mobileRef} placeholder='Mobile Phone Number' />
+        <input className='searchInput' type='text' ref={mobileRef} onChange={onChangePhone} placeholder='Mobile Phone Number' />
         <MobileOutlined />
       </div>
       <div className='idContainer'>

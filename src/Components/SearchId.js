@@ -2,10 +2,10 @@ import React from 'react'
 import { UserOutlined } from '@ant-design/icons'
 import SearchInput from './SearchInput'
 
-const SearchId = ({ userName, setUserName }) => {
+const SearchId = ({ searchUserName, setSearchUserName, setMobile }) => {
   const onChangInput = (e) => {
     const text = e.target.value
-    setUserName(text)
+    setSearchUserName(text)
   }
   return (
     <>
@@ -14,10 +14,10 @@ const SearchId = ({ userName, setUserName }) => {
           <h2>아이디 찾기</h2>
         </div>
         <div className='idContainer'>
-          <input className='idBox' type='text' placeholder='User Name' value={userName} onChange={onChangInput} />
+          <input className='idBox' type='text' placeholder='User Name' value={searchUserName} onChange={onChangInput} />
           <UserOutlined />
         </div>
-        <SearchInput />
+        <SearchInput setMobile={setMobile} />
       </div>
     </>
   )

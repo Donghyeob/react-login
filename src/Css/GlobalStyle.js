@@ -172,6 +172,7 @@ const GlobalStyle = createGlobalStyle`
 .searchBackBtn {
   position: absolute;
   bottom: 0px;
+  left: 15px;
   display: block;
   cursor: pointer;
 }
