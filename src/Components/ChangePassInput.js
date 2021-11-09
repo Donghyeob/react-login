@@ -1,18 +1,27 @@
 import React, { useState } from 'react'
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons'
 
-const ChangePassInput = (inputPass, setInputPass) => {
+const ChangePassInput = ({ rePass, setRePass, confirmPass, setConfirmPass }) => {
   const [passShow, setPassShow] = useState(false)
   const [inputType, setInputType] = useState('password')
-  const { rePass, confirm } = inputPass
+  // const { rePass, confirm } = inputPass
 
-  const onChangeInput = (e) => {
-    const [name, value] = e.target;
-    setInputPass({ ...inputPass, [name]: value })
+  // const onChangeInput = (e) => {
+  //   const [name, value] = e.target;
+  //   setInputPass({ ...inputPass, [name]: value })
+  // }
+
+  const onChangeInputRe = (e) => {
+    const text = e.target.value
+    setRePass(text)
+  }
+
+  const onChangeInputConfirm = (e) => {
+    const text = e.target.value
+    setConfirmPass(text)
   }
 
   const onClickPassVisible = () => {
-    console.log('visible')
     if (!passShow) {
       setPassShow(true)
       setInputType('text')
@@ -25,7 +34,7 @@ const ChangePassInput = (inputPass, setInputPass) => {
   return (
     <>
       <div className='passContainer'>
-        <input className='pwdBox' name='rePass' type={inputType} value={rePass} onChange={onChangeInput} placeholder='Re-enter new password' />
+        <input className='pwdBox' name='rePass' type={inputType} value={rePass} onChange={onChangeInputRe} placeholder='Re-enter new password' />
         {
           passShow
             ? <EyeInvisibleOutlined onClick={onClickPassVisible} />
@@ -33,7 +42,7 @@ const ChangePassInput = (inputPass, setInputPass) => {
         }
       </div>
       <div className='passContainer'>
-        <input className='pwdBox' name='confirm' type={inputType} value={confirm} onChange={onChangeInput} placeholder='Re-enter new password' />
+        <input className='pwdBox' name='confirm' type={inputType} value={confirmPass} onChange={onChangeInputConfirm} placeholder='Re-enter new password' />
         {
           passShow
             ? <EyeInvisibleOutlined onClick={onClickPassVisible} />

@@ -10,6 +10,7 @@ import { userInfo } from '../Data/userInfo'
 const Home = () => {
   const [logined, setLogined] = useState(false)
   const [userState, setUserState] = useState({ id: userInfo.id, password: userInfo.password })
+  console.log(userState)
 
   return (
     <>
@@ -23,7 +24,7 @@ const Home = () => {
                 <Route path='/' exact render={() => <LoginForm userState={userState} setLogined={setLogined} />} />
                 <Route path='/searchId' exact render={() => <SearchMain props={'SearchId'} />} />
                 <Route path='/searchPass' exact render={() => <SearchMain props={'SearchPass'} />} />
-                <Route path='/changePass' exact render={() => <ChangePass />} />
+                <Route path='/changePass' exact render={() => <ChangePass setUserState={setUserState} userState={userState} setLogined={setLogined} />} />
                 <Route path='/changePassLong' exact render={() => <ChangePassLong />} />
                 <Route path='/loginSuccess' exact render={() => <LoginSuccess />} />
               </Switch>

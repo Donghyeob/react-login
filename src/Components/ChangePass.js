@@ -1,8 +1,20 @@
 import React, { useState } from 'react'
 import ChangePassInput from './ChangePassInput'
 
-const ChangePass = () => {
-  const [inputPass, setInputPass] = useState({ rePass: '', confirm: '', })
+const ChangePass = ({ setUserState, userState, setLogined }) => {
+  // const [inputPass, setInputPass] = useState({ rePass: '', confirm: '', })
+  const [rePass, setRePass] = useState('')
+  const [confirmPass, setConfirmPass] = useState('')
+
+  const onClickChangePass = () => {
+    console.log(rePass)
+    if (rePass === confirmPass) {
+      setUserState({ ...userState, password: rePass })
+      setLogined(false)
+    } else {
+      alert('일치하지 않음')
+    }
+  }
 
   return (
     <>
@@ -14,8 +26,10 @@ const ChangePass = () => {
           <div>The password has been temporarily changed.</div>
           <div>Change your password to use it safely.</div>
         </div>
-        <ChangePassInput inputPass={inputPass} setInputPass={setInputPass} />
-        <ChangePassInput confirm={inputPass} setConfirm={setInputPass} />
+        <ChangePassInput rePass={rePass} setRePass={setRePass} confirmPass={confirmPass} setConfirmPass={setConfirmPass} />
+        <div>
+          <button className='loginBtn' onClick={onClickChangePass}>Create</button>
+        </div>
       </div>
     </>
   )
