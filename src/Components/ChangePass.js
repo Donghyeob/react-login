@@ -18,7 +18,7 @@ const ChangePass = ({ setUserState, userState, setLogined }) => {
 
   return (
     <>
-      <div className='loginContainer'>
+      <div className='contentContainer'>
         <div>
           <h2>Please Set new password</h2>
         </div>
@@ -28,7 +28,7 @@ const ChangePass = ({ setUserState, userState, setLogined }) => {
         </div>
         <ChangePassInput rePass={rePass} setRePass={setRePass} confirmPass={confirmPass} setConfirmPass={setConfirmPass} />
         <div>
-          <button className='loginBtn' onClick={onClickChangePass}>Create</button>
+          <button className='submitBtn' onClick={onClickChangePass}>Create</button>
         </div>
       </div>
     </>

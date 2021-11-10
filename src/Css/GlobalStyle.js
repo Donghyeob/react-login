@@ -1,67 +1,38 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
-.loginContainer {
+.positionContainer {
+  position: relative;
+}
+.contentContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-.idContainer {
+.headerContainer {
+  
+}
+// 공통 input 및 anticon 위치
+.inputContainer {
   display: flex;
   flex-direction: row;
   margin-left: -30px;
 }
-.anticon-user {
-  line-height: 40px;
-  margin-left: -30px;
-}
-.anticon-mobile {
-  line-height: 40px;
-  margin-left: -30px;
-}
-.anticon-mail {
-  line-height: 40px;
+.inputContainer > .anticon {
+  line-height: 32px;
   margin-left: -30px;
 }
 .anticon-arrow-left {
   margin-right: 10px;
 }
-.idBox {
+.inputBox {
   width: 300px;
   height: 30px;
   margin-bottom: 15px;
-}
-.searchInput {
-  width: 300px;
-  height: 30px;
-  margin-bottom: 15px;
-  background-color: lightgray;
-}
-.searchInput:focus {
-  background-color: white;
-}
-.passContainer {
-  display: flex;
-  flex-direction: row;
-  margin-left: -30px;
-}
-.anticon-eye {
-  line-height: 40px;
-  margin-left: -30px;
-  cursor: pointer;
-}
-.anticon-eye-invisible {
-  line-height: 40px;
-  margin-left: -30px;
-  cursor: pointer;
-}
-.pwdBox {
-  width: 300px;
-  height: 30px;
 }
 
-.loginBtn {
+.submitBtn {
   width: 308px;
   height: 40px;
   margin-left: -18px;
@@ -166,10 +137,7 @@ const GlobalStyle = createGlobalStyle`
   background: tomato;
   border-color: tomato;
 }
-.positionContainer {
-  position: relative;
-}
-.searchBackBtn {
+.pageBackBtn {
   position: absolute;
   bottom: 0px;
   left: 15px;

@@ -32,13 +32,13 @@ const SearchMain = ({ props }) => {
 
   return (
     <>
-      <div className='loginContainer'>
+      <div className='contentContainer'>
         {props === 'SearchId' && <SearchId searchUserName={searchUserName} setSearchUserName={setSearchUserName} setMobile={setMobile} />}
         {props === 'SearchPass' && <SearchPass searchUserId={searchUserId} setSearchUserId={setSearchUserId} setMobile={setMobile} />}
         <div>
-          <button className='loginBtn' onClick={onClickSend}>Send</button>
+          <button className='submitBtn' onClick={onClickSend}>Send</button>
         </div>
-        <span onClick={onClickBack} className='searchBackBtn'><ArrowLeftOutlined />Back</span>
+        <span onClick={onClickBack} className='pageBackBtn'><ArrowLeftOutlined />Back</span>
       </div>
     </>
   )

@@ -10,16 +10,14 @@ const SearchPass = ({ searchUserId, setSearchUserId, setMobile }) => {
 
   return (
     <>
-      <div className='loginContainer'>
-        <div>
-          <h2>비밀번호 찾기</h2>
-        </div>
-        <div className='idContainer'>
-          <input className='idBox' type='text' value={searchUserId} onChange={onChangeInput} placeholder='User ID' />
-          <UserOutlined />
-        </div>
-        <SearchInput setMobile={setMobile} />
+      <div>
+        <h2>비밀번호 찾기</h2>
       </div>
+      <div className='inputContainer'>
+        <input className='inputBox' type='text' value={searchUserId} onChange={onChangeInput} placeholder='User ID' />
+        <UserOutlined />
+      </div>
+      <SearchInput setMobile={setMobile} />
     </>
   )
 }

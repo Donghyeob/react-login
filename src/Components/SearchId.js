@@ -9,16 +9,14 @@ const SearchId = ({ searchUserName, setSearchUserName, setMobile }) => {
   }
   return (
     <>
-      <div className='loginContainer'>
-        <div>
-          <h2>아이디 찾기</h2>
-        </div>
-        <div className='idContainer'>
-          <input className='idBox' type='text' placeholder='User Name' value={searchUserName} onChange={onChangInput} />
-          <UserOutlined />
-        </div>
-        <SearchInput setMobile={setMobile} />
+      <div>
+        <h2>아이디 찾기</h2>
       </div>
+      <div className='inputContainer'>
+        <input className='inputBox' type='text' placeholder='User Name' value={searchUserName} onChange={onChangInput} />
+        <UserOutlined />
+      </div>
+      <SearchInput setMobile={setMobile} />
     </>
   )
 }

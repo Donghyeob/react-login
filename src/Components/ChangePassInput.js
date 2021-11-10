@@ -33,16 +33,16 @@ const ChangePassInput = ({ rePass, setRePass, confirmPass, setConfirmPass }) => 
 
   return (
     <>
-      <div className='passContainer'>
-        <input className='pwdBox' name='rePass' type={inputType} value={rePass} onChange={onChangeInputRe} placeholder='Re-enter new password' />
+      <div className='inputContainer'>
+        <input className='inputBox' name='rePass' type={inputType} value={rePass} onChange={onChangeInputRe} placeholder='Re-enter new password' />
         {
           passShow
             ? <EyeInvisibleOutlined onClick={onClickPassVisible} />
             : <EyeOutlined onClick={onClickPassVisible} />
         }
       </div>
-      <div className='passContainer'>
-        <input className='pwdBox' name='confirm' type={inputType} value={confirmPass} onChange={onChangeInputConfirm} placeholder='Re-enter new password' />
+      <div className='inputContainer'>
+        <input className='inputBox' name='confirm' type={inputType} value={confirmPass} onChange={onChangeInputConfirm} placeholder='Re-enter new password' />
         {
           passShow
             ? <EyeInvisibleOutlined onClick={onClickPassVisible} />

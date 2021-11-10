@@ -72,17 +72,17 @@ const LoginForm = ({ userState, setLogined }) => {
   }, [id])
 
   return (
-    <div className='loginContainer'>
-      <div>
+    <div className='contentContainer'>
+      <div className='headerContainer'>
         <h2>로그인</h2>
         <span>사용자 아이디와 암호를 입력하세요.</span>
       </div>
-      <div className='idContainer'>
-        <input className='idBox' type='text' value={id} onChange={onChangeId} placeholder='Id' />
+      <div className='inputContainer'>
+        <input className='inputBox' type='text' value={id} onChange={onChangeId} placeholder='Id' />
         <UserOutlined />
       </div>
-      <div className='passContainer'>
-        <input className='pwdBox' ref={visiRef} type='password' value={password} onChange={onChangePassword} placeholder='Password' />
+      <div className='inputContainer'>
+        <input className='inputBox' ref={visiRef} type='password' value={password} onChange={onChangePassword} placeholder='Password' />
         {
           passShow
             ? <EyeInvisibleOutlined onClick={onClickPassVisible} />
@@ -97,7 +97,7 @@ const LoginForm = ({ userState, setLogined }) => {
           setCaptcha={setCaptcha} />
       </div>
       <div>
-        <button className='loginBtn' onClick={onClickLogin}>로그인</button>
+        <button className='submitBtn' onClick={onClickLogin}>로그인</button>
         <LoginModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} setLogined={setLogined} />
         <div className='fixId'>
           <label><input type='checkbox' ref={checkRef} onClick={onClickChecked} />아이디 저장</label>
