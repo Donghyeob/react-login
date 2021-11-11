@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import VisibleInput from './VisibleInput'
 
 const ChangePassInput = ({ rePass, setRePass, confirmPass, setConfirmPass }) => {
