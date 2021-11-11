@@ -4,7 +4,6 @@ import LoginForm from './LoginForm'
 import SearchMain from './SearchMain'
 import LoginSuccess from './LoginSuccess'
 import ChangePass from './ChangePass'
-import ChangePassLong from './ChangePassLong'
 import { userInfo } from '../Data/userInfo'
 
 const Home = () => {
@@ -24,8 +23,8 @@ const Home = () => {
                 <Route path='/' exact render={() => <LoginForm userState={userState} setLogined={setLogined} />} />
                 <Route path='/searchId' exact render={() => <SearchMain props={'SearchId'} />} />
                 <Route path='/searchPass' exact render={() => <SearchMain props={'SearchPass'} />} />
-                <Route path='/changePass' exact render={() => <ChangePass setUserState={setUserState} userState={userState} setLogined={setLogined} />} />
-                <Route path='/changePassLong' exact render={() => <ChangePassLong />} />
+                <Route path='/changePass' exact render={() => <ChangePass props={'ChangePass'} setUserState={setUserState} userState={userState} setLogined={setLogined} />} />
+                <Route path='/changePassLong' exact render={() => <ChangePass props={'ChangePassLong'} userState={userState} setUserState={setUserState} setLogined={setLogined} />} />
                 <Route path='/loginSuccess' exact render={() => <LoginSuccess />} />
               </Switch>
             </Router>

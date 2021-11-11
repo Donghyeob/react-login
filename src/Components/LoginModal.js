@@ -57,8 +57,6 @@ const LoginModal = ({ isModalVisible, setIsModalVisible, setLogined }) => {
 
   useEffect(() => {
     min < 1 && sec < 1 && (clearInterval(limitTimer))
-    console.log(min)
-    console.log(sec)
   }, [sec])
 
   return (

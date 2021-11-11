@@ -1,38 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { UserOutlined, EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
+import { UserOutlined } from '@ant-design/icons'
 import { setCookies, getCookies, deleteCookies } from '../Module/cookies'
 import Captcha from './Captcha'
 import LoginModal from './LoginModal'
+import VisibleInput from './VisibleInput'
 
 const LoginForm = ({ userState, setLogined }) => {
   const [id, setId] = useState('')
   const [password, setPassword] = useState('')
-  const [passShow, setPassShow] = useState(false)
   const [captcha, setCaptcha] = useState('')
   const [captchaString, setCaptchaString] = useState('')
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const visiRef = useRef()
+  const [isModalVisible, setIsModalVisible] = useState(false)
   const checkRef = useRef()
 
   const onChangeId = (e) => {
     const inputText = e.target.value
     setId(inputText)
-  }
-
-  const onChangePassword = (e) => {
-    const inputText = e.target.value
-    setPassword(inputText)
-  }
-
-  const onClickPassVisible = () => {
-    if (!passShow) {
-      setPassShow(true)
-      visiRef.current.type = 'text'
-    } else {
-      setPassShow(false)
-      visiRef.current.type = 'password'
-    }
   }
 
   const onClickChecked = (e) => {
@@ -81,14 +65,15 @@ const LoginForm = ({ userState, setLogined }) => {
         <input className='inputBox' type='text' value={id} onChange={onChangeId} placeholder='Id' />
         <UserOutlined />
       </div>
-      <div className='inputContainer'>
+      {/* <div className='inputContainer'>
         <input className='inputBox' ref={visiRef} type='password' value={password} onChange={onChangePassword} placeholder='Password' />
         {
           passShow
             ? <EyeInvisibleOutlined onClick={onClickPassVisible} />
             : <EyeOutlined onClick={onClickPassVisible} />
         }
-      </div>
+      </div> */}
+      <VisibleInput type={'password'} show={false} password={password} setPassword={setPassword} placeholder={'Password'} />
       <div>
         <Captcha
           captchaString={captchaString}
