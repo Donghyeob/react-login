@@ -31,7 +31,6 @@ const LoginForm = ({ userState, setLogined }) => {
   const onClickLogin = () => {
     (userState.id === id && userState.password === password && captchaString === captcha) === true
       ? showModal()
-      // ? setLogined(true)
       : alert('id, password, captcha 확인')
   }
 
@@ -65,14 +64,6 @@ const LoginForm = ({ userState, setLogined }) => {
         <input className='inputBox' type='text' value={id} onChange={onChangeId} placeholder='Id' />
         <UserOutlined />
       </div>
-      {/* <div className='inputContainer'>
-        <input className='inputBox' ref={visiRef} type='password' value={password} onChange={onChangePassword} placeholder='Password' />
-        {
-          passShow
-            ? <EyeInvisibleOutlined onClick={onClickPassVisible} />
-            : <EyeOutlined onClick={onClickPassVisible} />
-        }
-      </div> */}
       <VisibleInput type={'password'} show={false} password={password} setPassword={setPassword} placeholder={'Password'} />
       <div>
         <Captcha

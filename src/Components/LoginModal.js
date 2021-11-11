@@ -3,7 +3,7 @@ import { Modal } from 'antd';
 import 'antd/dist/antd.css';
 
 const LoginModal = ({ isModalVisible, setIsModalVisible, setLogined }) => {
-  let limitTime = 10
+  let limitTime = 299
   const [min, setMin] = useState('')
   const [sec, setSec] = useState('')
   const [limitTimer, setLimitTimer] = useState(null)
@@ -73,7 +73,7 @@ const LoginModal = ({ isModalVisible, setIsModalVisible, setLogined }) => {
           <button onClick={handleSend}>Send</button>
         </div>
         <div>
-          <input type='text' value={authText} onChange={onChangeText} /><span>{min}{limitTimer ? (<>:</>) : ''}{sec}</span>
+          <input className='modalInput' type='text' value={authText} onChange={onChangeText} /><span>{min}{min ? (<>:</>) : ''}{sec}</span>
         </div>
         <div>
           <ul>

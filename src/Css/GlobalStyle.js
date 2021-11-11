@@ -90,6 +90,12 @@ const GlobalStyle = createGlobalStyle`
   border-top: 1px solid lightgray;
   padding-top: 20px;
 }
+.modalInput {
+  width: 300px;
+}
+.modalInput > span {
+  margin-left: -40px;
+}
 .ant-modal {
   width: 400px !important;
 }
@@ -100,7 +106,7 @@ const GlobalStyle = createGlobalStyle`
   margin: 0 15px 0 5px;
 }
 .ant-modal-body label {
-  padding: 8px 98px 8px 5px;
+  padding: 8px 90px 8px 5px;
   margin: 0 3px 0 3px;
   border-radius: 5px;
   background: #f2f2f2;
