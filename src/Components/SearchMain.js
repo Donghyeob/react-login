@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import SearchId from './SearchId'
 import SearchPass from './SearchPass'
 import { userInfo } from '../Data/userInfo'
@@ -26,10 +27,6 @@ const SearchMain = ({ props }) => {
     props === 'SearchPass' && handleSearchPass()
   }
 
-  const onClickBack = () => {
-    window.history.back()
-  }
-
   return (
     <>
       <div className='contentContainer'>
@@ -38,7 +35,7 @@ const SearchMain = ({ props }) => {
         <div>
           <button className='submitBtn' onClick={onClickSend}>Send</button>
         </div>
-        <span onClick={onClickBack} className='pageBackBtn'><ArrowLeftOutlined />Back</span>
+        <Link to='/' className='pageBackBtn'><ArrowLeftOutlined />Back</Link>
       </div>
     </>
   )

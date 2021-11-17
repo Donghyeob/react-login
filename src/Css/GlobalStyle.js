@@ -149,6 +149,7 @@ const GlobalStyle = createGlobalStyle`
   left: 15px;
   display: block;
   cursor: pointer;
+  color: black;
 }
 `
 
