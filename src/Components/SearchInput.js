@@ -30,16 +30,16 @@ const SearchInput = ({ setMobile }) => {
 
   return (
     <>
-      <div>
+      <div className='infraContainer'>
         <label><input type='radio' onClick={onClickRadio} value={'sms'} name={'infra'} defaultChecked />SMS</label>
         <label><input type='radio' onClick={onClickRadio} value={'email'} name={'infra'} />E-mail</label>
       </div>
       <div className='inputContainer'>
-        <input className='inputBox' type='text' ref={mobileRef} onChange={onChangePhone} placeholder='Mobile Phone Number' />
+        <input className='inputBox' type='number' ref={mobileRef} onChange={onChangePhone} placeholder='Mobile Phone Number' />
         <MobileOutlined />
       </div>
       <div className='inputContainer'>
-        <input className='inputBox' type='text' ref={mailRef} placeholder='E-mail' />
+        <input className='inputBox' type='email' ref={mailRef} placeholder='E-mail' />
         <MailOutlined />
       </div>
     </>

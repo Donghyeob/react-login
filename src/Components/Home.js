@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import LoginForm from './LoginForm'
-import SearchMain from './SearchMain'
-import LoginSuccess from './LoginSuccess'
-import ChangePass from './ChangePass'
 import { userInfo } from '../Data/userInfo'
+import loadable from '@loadable/component'
+const LoginForm = loadable(() => import('./LoginForm'))
+const SearchMain = loadable(() => import('./SearchMain'))
+const LoginSuccess = loadable(() => import('./LoginSuccess'))
+const ChangePass = loadable(() => import('./ChangePass'))
 
 const Home = () => {
   const [logined, setLogined] = useState(false)

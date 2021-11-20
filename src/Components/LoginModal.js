@@ -11,9 +11,7 @@ const LoginModal = ({ isModalVisible, setIsModalVisible, setLogined }) => {
   const [authRandom, setAuthRandom] = useState('')
 
   const handleOk = () => {
-    clearInterval(limitTimer)
-    setMin('')
-    setSec('')
+    otpRefresh()
     if (authText === authRandom) {
       setIsModalVisible(false)
       setLogined(true)
@@ -26,6 +24,7 @@ const LoginModal = ({ isModalVisible, setIsModalVisible, setLogined }) => {
 
   const handleCancel = () => {
     setIsModalVisible(false);
+    otpRefresh()
   };
 
   const onChangeText = (e) => {
@@ -34,6 +33,11 @@ const LoginModal = ({ isModalVisible, setIsModalVisible, setLogined }) => {
   }
 
   const handleSend = () => {
+    if (document.querySelector('input[value="sms"]:checked')) {
+      document.querySelector('input[value="email"]').disabled = true
+    } else {
+      document.querySelector('input[value="sms"]').disabled = true
+    }
     handleTimer()
     const chars = '0123456789'
     const stringLength = 4
@@ -55,8 +59,20 @@ const LoginModal = ({ isModalVisible, setIsModalVisible, setLogined }) => {
     }, 1000))
   }
 
+  const otpRefresh = () => {
+    clearInterval(limitTimer)
+    setMin('')
+    setSec('')
+    document.querySelector('input[value="sms"]').disabled = false
+    document.querySelector('input[value="email"]').disabled = false
+  }
+
   useEffect(() => {
-    min < 1 && sec < 1 && (clearInterval(limitTimer))
+    document.addEventListener("load", () => {
+      if (min < 1 && sec < 1) {
+        otpRefresh()
+      }
+    })
   }, [sec])
 
   return (
@@ -65,7 +81,7 @@ const LoginModal = ({ isModalVisible, setIsModalVisible, setLogined }) => {
         <div>
           <span>Please select a transfer methods.</span>
         </div>
-        <div>
+        <div className='infraContainer'>
           <label><input type='radio' value={'sms'} name={'infra'} defaultChecked />SMS</label>
           <label><input type='radio' value={'email'} name={'infra'} />E-mail</label>
         </div>

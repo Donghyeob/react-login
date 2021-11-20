@@ -102,12 +102,15 @@ const GlobalStyle = createGlobalStyle`
 .ant-modal-content {
   text-align: center;
 }
-.ant-modal-body input[type='radio'] {
+.infraContainer {
+  margin: 0 0 10px -15px;
+}
+.infraContainer input[type='radio'] {
   margin: 0 15px 0 5px;
 }
-.ant-modal-body label {
-  padding: 8px 90px 8px 5px;
-  margin: 0 3px 0 3px;
+.infraContainer label {
+  padding: 8px 80px 8px 5px;
+  margin: 0 3px 10px 3px;
   border-radius: 5px;
   background: #f2f2f2;
 }
